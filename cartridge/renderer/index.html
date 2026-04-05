@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CARTRIDGE</title>
+
+  <!-- Google Fonts: Barlow (UI) + Share Tech Mono (mono/badges) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+
+  <!-- Styles — load order matters: vars → base → components -->
+  <link rel="stylesheet" href="styles/vars.css" />
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ── Titlebar ──────────────────────────────────────────────────────── -->
+  <header id="titlebar">
+    <span class="titlebar__wordmark">CARTRIDGE</span>
+
+    <div class="titlebar__controls">
+      <!-- Settings gear -->
+      <button class="titlebar__btn" id="btn-settings" title="Settings" aria-label="Settings">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8 10.5A2.5 2.5 0 1 1 8 5.5a2.5 2.5 0 0 1 0 5Zm5.84-1.52a5.57 5.57 0 0 0 .05-.98c0-.34-.03-.67-.08-.98l1.35-1.05a.4.4 0 0 0 .1-.5l-1.28-2.2a.4.4 0 0 0-.48-.17l-1.59.64a5.4 5.4 0 0 0-.84-.49l-.24-1.68A.4.4 0 0 0 10.4 1H7.6a.4.4 0 0 0-.4.34L6.97 3.1a5.4 5.4 0 0 0-.84.49l-1.59-.64a.4.4 0 0 0-.48.17L2.78 5.3a.4.4 0 0 0 .1.5l1.35 1.05a5.57 5.57 0 0 0-.08.98c0 .32.03.65.08.98L2.88 9.86a.4.4 0 0 0-.1.5l1.28 2.2c.1.17.3.23.48.17l1.59-.64c.26.18.54.35.84.49l.24 1.69c.05.2.22.34.4.34h2.8c.2 0 .36-.14.4-.34l.24-1.69c.3-.14.58-.3.84-.49l1.59.64c.18.07.38 0 .48-.17l1.28-2.2a.4.4 0 0 0-.1-.5l-1.35-1.05Z"/>
+        </svg>
+      </button>
+
+      <!-- Window: minimize -->
+      <button class="titlebar__btn" id="btn-minimize" title="Minimize" aria-label="Minimize">
+        <svg width="11" height="2" viewBox="0 0 11 2" fill="currentColor">
+          <rect width="11" height="2" rx="1"/>
+        </svg>
+      </button>
+
+      <!-- Window: maximize -->
+      <button class="titlebar__btn" id="btn-maximize" title="Maximize" aria-label="Maximize">
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x=".75" y=".75" width="9.5" height="9.5" rx="1.25"/>
+        </svg>
+      </button>
+
+      <!-- Window: close -->
+      <button class="titlebar__btn titlebar__btn--close" id="btn-close" title="Close" aria-label="Close">
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <line x1="1" y1="1" x2="10" y2="10"/>
+          <line x1="10" y1="1" x2="1" y2="10"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ── Main shell: 3 columns ─────────────────────────────────────────── -->
+  <div id="shell">
+
+    <!-- Col 1: System nav -->
+    <nav id="sys-panel">
+      <!-- Populated by renderer/components/sysNav.js in Phase 5 -->
+      <p class="sys-nav__header">Systems</p>
+      <ul class="sys-nav__list" id="sys-nav-list"></ul>
+
+      <div class="sys-nav__footer">
+        <span id="storage-label">0 ROMs · 0 MB</span>
+        <div class="storage-meter">
+          <div class="storage-meter__fill" id="storage-fill" style="width: 0%"></div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Col 2: Game library -->
+    <main id="lib-col">
+      <!-- Search + select toolbar -->
+      <div class="lib-toolbar">
+        <input
+          class="lib-search__input"
+          id="lib-search-input"
+          type="search"
+          placeholder="Search games…"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <button class="lib-toolbar__btn" id="btn-select">Select</button>
+      </div>
+
+      <!-- Selection action bar (hidden until select mode active) -->
+      <div class="lib-select-bar" id="lib-select-bar">
+        <span class="lib-select-bar__count" id="select-count">0 selected</span>
+        <div class="lib-select-bar__actions">
+          <button class="lib-toolbar__btn lib-toolbar__btn--danger" id="btn-delete-selected" disabled>Delete</button>
+          <button class="lib-toolbar__btn" id="btn-select-cancel">Cancel</button>
+        </div>
+      </div>
+
+      <!-- Scrollable game grid -->
+      <div id="lib-col__scroll">
+        <!-- Populated by renderer/views/library.js in Phase 5 -->
+        <div class="lib-empty" id="lib-empty">
+          <div class="lib-empty__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" width="48" height="48" opacity="0.35">
+              <rect x="2" y="6" width="20" height="12" rx="2"/>
+              <circle cx="16" cy="12" r="2"/>
+              <rect x="4" y="10" width="4" height="4" rx="1"/>
+            </svg>
+          </div>
+          <div class="lib-empty__title">No games yet</div>
+          <div class="lib-empty__sub">Drop a ROM file into the zone on the right to get started.</div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Col 3: Drop zone -->
+    <aside id="drop-col">
+      <p class="drop-col__header">Add Game</p>
+
+      <div class="drop-zone" id="drop-zone">
+        <div class="drop-zone__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="17 8 12 3 7 8"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </svg>
+        </div>
+        <div class="drop-zone__label">Drop a ROM here</div>
+        <div class="drop-zone__sub">
+          NES · SNES · GBA · GB<br/>
+          Genesis · Atari 2600 · 7800
+        </div>
+      </div>
+    </aside>
+
+  </div><!-- /#shell -->
+
+</div><!-- /#app -->
+
+<!-- Toast container (above everything) -->
+<div id="toast-container" aria-live="polite" aria-atomic="false"></div>
+
+<!-- App bootstrap -->
+<script src="app.js" type="module"></script>
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+{
+  "name": "cartridge",
+  "version": "0.4.0",
+  "description": "Minimalist desktop emulator \u2014 drag a ROM, it plays.",
+  "author": "CARTRIDGE",
+  "main": "main/index.js",
+  "scripts": {
+    "start": "electron .",
+    "download-cores": "node scripts/download-cores.js",
+    "build": "npm run download-cores && electron-builder build --win --publish never",
+    "build:mac": "npm run download-cores && electron-builder build --mac --publish never",
+    "build:linux": "npm run download-cores && electron-builder build --linux --publish never"
+  },
+  "build": {
+    "appId": "com.cartridge.emulator",
+    "productName": "CARTRIDGE",
+    "copyright": "Copyright \u00a9 2026 CARTRIDGE",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main/**/*",
+      "renderer/**/*",
+      "rom/**/*",
+      "db/**/*",
+      "input/**/*",
+      "emulator/**/*",
+      "scripts/download-cores.js",
+      "package.json",
+      "!**/*.test.js",
+      "!**/node_modules/.cache"
+    ],
+    "extraResources": [],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "assets/icon.png",
+      "extraResources": [
+        {
+          "from": "native/mupen64plus-win/",
+          "to": "mupen64plus/",
+          "filter": [
+            "**/*"
+          ]
+        },
+        {
+          "from": "native/dolphin-win/",
+          "to": "dolphin/",
+          "filter": [
+            "**/*"
+          ]
+        }
+      ]
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "assets/icon.png",
+      "category": "public.app-category.games",
+      "extraResources": [
+        {
+          "from": "native/mupen64plus-mac/",
+          "to": "mupen64plus/",
+          "filter": [
+            "**/*"
+          ]
+        },
+        {
+          "from": "native/dolphin-mac/",
+          "to": "dolphin/",
+          "filter": [
+            "**/*"
+          ]
+        }
+      ]
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "assets/icon.png",
+      "category": "Game",
+      "extraResources": [
+        {
+          "from": "native/mupen64plus-linux/",
+          "to": "mupen64plus/",
+          "filter": [
+            "**/*"
+          ]
+        },
+        {
+          "from": "native/dolphin-linux/",
+          "to": "dolphin/",
+          "filter": [
+            "**/*"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowElevation": false,
+      "allowToChangeInstallationDirectory": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "CARTRIDGE",
+      "installerLanguages": [
+        "en_US"
+      ],
+      "language": "1033"
+    }
+  },
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "dependencies": {
+    "sql.js": "^1.12.0"
+  }
+}

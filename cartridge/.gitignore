@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Emulator cores (downloaded via npm run download-cores)
+emulator/data/
+
+# User data
+resources/data/
+*.db
+scraper-creds.json
+*.save.zip
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*

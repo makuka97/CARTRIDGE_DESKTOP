@@ -1,0 +1,122 @@
+/* renderer/styles/vars.css
+   Design tokens — every color, size, and spacing value lives here. */
+
+:root {
+
+  /* ── Color palette ──────────────────────────────────────────────────── */
+
+  /* Backgrounds — clean white / light grey */
+  --color-bg-base:       #ffffff;   /* Window fill                         */
+  --color-bg-surface:    #f5f5f5;   /* Panels, sidebar                     */
+  --color-bg-elevated:   #eeeeee;   /* Hover states, cards                 */
+  --color-bg-overlay:    #e5e5e5;   /* Modals, toasts                      */
+
+  /* Borders */
+  --color-border:        #e0e0e0;   /* Dividers                            */
+  --color-border-strong: #bdbdbd;   /* Active / focused                    */
+
+  /* Accent — pure black, matching mobile */
+  --color-accent:        #1a1a1a;
+  --color-accent-dim:    #444444;
+  --color-accent-glow:   rgba(0, 0, 0, 0.10);
+  --color-accent-pulse:  rgba(0, 0, 0, 0.20);
+
+  /* Text */
+  --color-text-primary:  #111111;   /* Main text — near black              */
+  --color-text-secondary:#555555;   /* Secondary                           */
+  --color-text-muted:    #999999;   /* Placeholders                        */
+  --color-text-inverse:  #ffffff;
+
+  /* System colors — desaturated to match b&w palette */
+  --color-nes:           #e53935;
+  --color-snes:          #6d4fc2;
+  --color-n64:           #c0392b;
+  --color-gcn:           #6a5acd;
+  --color-wii:           #009ac7;
+  --color-gba:           #1e88e5;
+  --color-gb:            #558b2f;
+  --color-vb:            #b71c1c;
+  --color-sega:          #1565c0;
+  --color-genesis:       #2e7d32;
+  --color-pce:           #00838f;
+  --color-ngp:           #e65100;
+  --color-ws:            #6a1b9a;
+  --color-atari:         #e65100;
+  --color-gb:            #558b2f;
+
+  /* Status */
+  --color-success:       #2e7d32;
+  --color-error:         #c62828;
+  --color-warning:       #e65100;
+
+
+  /* ── Typography ─────────────────────────────────────────────────────── */
+
+  --font-ui:       'Barlow', sans-serif;
+  --font-mono:     'Share Tech Mono', monospace;
+
+  --text-xs:    11px;
+  --text-sm:    13px;
+  --text-base:  14px;
+  --text-md:    15px;
+  --text-lg:    17px;
+  --text-xl:    20px;
+  --text-2xl:   24px;
+  --text-3xl:   32px;
+
+  --weight-normal:   400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  --leading-tight:   1.2;
+  --leading-normal:  1.5;
+
+
+  /* ── Layout ──────────────────────────────────────────────────────────── */
+
+  --titlebar-height:  38px;
+  --sys-panel-width:  220px;
+  --drop-col-width:   260px;
+  --tile-width:       160px;
+  --tile-height:      220px;
+  --tile-gap:         16px;
+
+
+  /* ── Spacing ─────────────────────────────────────────────────────────── */
+
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+
+  /* ── Radii ───────────────────────────────────────────────────────────── */
+
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:  12px;
+  --radius-xl:  16px;
+  --radius-pill: 999px;
+
+
+  /* ── Shadows ─────────────────────────────────────────────────────────── */
+
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.10);
+  --shadow-md:  0 4px 12px rgba(0,0,0,0.12);
+  --shadow-lg:  0 8px 28px rgba(0,0,0,0.16);
+  --shadow-glow: 0 0 20px var(--color-accent-glow);
+
+
+  /* ── Transitions ─────────────────────────────────────────────────────── */
+
+  --transition-fast:   80ms ease;
+  --transition-base:  160ms ease;
+  --transition-slow:  280ms ease;
+  --transition-enter: 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
